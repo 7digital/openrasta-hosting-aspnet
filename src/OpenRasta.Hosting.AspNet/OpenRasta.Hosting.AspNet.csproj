@@ -8,10 +8,11 @@
     <ProjectGuid>{3EB3840C-3FA2-49D7-8F53-3B85BC092567}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenRasta.Hosting.AspNet.v2</RootNamespace>
-    <AssemblyName>OpenRasta.Hosting.AspNet.v2</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <RootNamespace>OpenRasta.Hosting.AspNet</RootNamespace>
+    <AssemblyName>OpenRasta.Hosting.AspNet</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -33,6 +34,9 @@
   <ItemGroup>
     <Reference Include="OpenRasta">
       <HintPath>..\..\lib\OpenRasta.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenRasta.Codecs.WebForms">
+      <HintPath>..\..\lib\OpenRasta.Codecs.WebForms.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />

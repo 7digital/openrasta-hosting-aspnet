@@ -1,7 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
-    <OpenWrap-ExportName>tests</OpenWrap-ExportName>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
@@ -13,10 +12,7 @@
     <AssemblyName>OpenRasta.Hosting.AspNet.Tests.Integration</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <FileUpgradeFlags>
-    </FileUpgradeFlags>
-    <OldToolsVersion>3.5</OldToolsVersion>
-    <UpgradeBackupLocation />
+    <TargetFrameworkProfile />
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -31,12 +27,13 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
-    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperEnabled>true</BootstrapperEnabled> 
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -45,12 +42,22 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenRasta">
+      <HintPath>..\..\lib\OpenRasta.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenRasta.Testing">
+      <HintPath>..\..\lib\OpenRasta.Testing.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -72,13 +79,9 @@
     <Compile Include="server_context.cs" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenRasta.Codecs.WebForms\OpenRasta.Codecs.WebForms.csproj">
-      <Project>{B4EC606E-48A7-4653-AD88-3614A5FF360A}</Project>
-      <Name>Project OpenRasta.Codecs.WebForms</Name>
-    </ProjectReference>
+    <EmbeddedResource Include="Web.config">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Pages\" />
@@ -100,7 +103,13 @@
       <Install>true</Install>
     </BootstrapperPackage>
   </ItemGroup>
-  <Import Project="..\..\build\common.project.properties" />
+  <ItemGroup>
+    <ProjectReference Include="..\OpenRasta.Hosting.AspNet\OpenRasta.Hosting.AspNet.csproj">
+      <Project>{3EB3840C-3FA2-49D7-8F53-3B85BC092567}</Project>
+      <Name>OpenRasta.Hosting.AspNet</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
